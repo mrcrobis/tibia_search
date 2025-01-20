@@ -14,3 +14,13 @@ Bibliotecas utilizadas:
     - os (interface gráfica)
     - tkinter (abrir caixa de textos/alertas)
     - PIL (manipulação de imagens)
+
+Após a instalação das bibliotecas, basta o usuário editar os items que queira buscar, adicionando ou removendo do array items e items_grand_sanguine.
+
+Com o jogo aberto e o personagem posicionado na frente do depot o usuário deverá fazer um teste para verificar a posição do mouse onde será necessário executar parte do código e salvar os valores da posicao_mouse, esse valor irá variar devido a: tamanho de monitor, tamanho da janela do jogo e tamanho da resolução da tela.
+
+Com o teste feito o programa principal poderá ser executado, tendo que informar o servidor para o programa. Feito isso deixe a janela do jogo no monitor e o programa executará as ações de coleta e armazenamento de valores.
+
+Ao encerrar o programa irá informar o tempo decorrido.
+
+O arquivo .pbix é um teste feito em PowerBI para demonstração e afins de estudos utilizando a plataforma
