@@ -7,6 +7,7 @@ import pandas as pd
 import tkinter as tk
 import time
 import shutil
+import re
 from PIL import Image
 from tkinter import messagebox
 from datetime import datetime
@@ -115,8 +116,44 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     wb.save(nome_arquivo)
     print(f"Arquivo '{nome_arquivo}' criado e modificado com sucesso!")
 
-def combinar_planilhas():
-    ...
+def combinar_planilhas(pasta_entrada, nome_base):
+    # Lista todos os arquivos na pasta
+    arquivos_xlsx = [f for f in os.listdir(pasta_entrada) if f.endswith(".xlsx")]
+
+    # Filtra os arquivos que começam com o nome_base
+    arquivos_para_unir = [os.path.join(pasta_entrada, f) for f in arquivos_xlsx if re.match(f"{nome_base}_.+\\.xlsx", f)]
+
+    if not arquivos_para_unir:
+        print(f"Nenhum arquivo encontrado para combinar com o nome base '{nome_base}'.")
+        return
+
+    # Carrega a primeira planilha como base
+    wb_base = openpyxl.load_workbook(arquivos_para_unir[0])
+    planilha_principal = wb_base[wb_base.sheetnames[0]]
+
+    # Percorre os outros arquivos e preenche os valores vazios
+    for arquivo in arquivos_para_unir[1:]:
+        wb_atual = openpyxl.load_workbook(arquivo)
+        planilha_atual = wb_atual[wb_atual.sheetnames[0]]
+
+        # Percorre todas as células da planilha atual
+        for row in planilha_atual.iter_rows():
+            for cell in row:
+                row_index = cell.row
+                col_index = cell.column
+
+                # Obtém a célula correspondente na planilha principal
+                cell_principal = planilha_principal.cell(row=row_index, column=col_index)
+
+                # Se a célula na planilha principal estiver vazia, preenche com o valor da planilha atual
+                if cell_principal.value is None or cell_principal.value == "":
+                    cell_principal.value = cell.value
+
+    # Salva o arquivo modificado na mesma pasta
+    nome_saida = os.path.join(pasta_entrada, f"{nome_base}_unificado.xlsx")
+    wb_base.save(nome_saida)
+
+    print(f"Arquivo '{nome_saida}' criado com sucesso! Todas as planilhas com o nome base '{nome_base}' foram unificadas.")
 
 def exibir_caixa_mensagem():
     root = tk.Tk()
@@ -366,13 +403,21 @@ def mainItemSanguine():
         aux += 1
 
 #test -----------------------------------------------------------------------------------------------------------------------------------
+
 arquivo_origem = excel_path
 copiar_e_modificar_excel(arquivo_origem, identificador_servidor)
+
+#pasta_entrada = "db_sheets"
+#nome_base = "06-03-2025"  
+#combinar_planilhas(pasta_entrada, nome_base)
+
 # testar a posicao do mouse
 #posicao_mouse = pyautogui.position()
+
 #print(f"A posição atual do mouse é: {posicao_mouse}")
 
 #execution -------------------------------------------------------------------------------------------------------------------------------
+
 """
 start_time = time.time()
 time.sleep(5)
@@ -384,6 +429,7 @@ execution_time = end_time - start_time
 exibir_caixa_mensagem()
 print(f"Tempo de execução: {execution_time:.2f} segundos")
 """
+
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
 
