@@ -102,19 +102,21 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
         return
 
     # Seleciona a planilha "DB"
-    if "DB" in wb.sheetnames:
-        ws = wb["DB"]
+    ws = wb["DB"]
 
-        # Apaga os valores das colunas E e F da linha 2 até a linha 287
-        for row in range(2, 26377):  # Linha 2 até 287 (Excel usa indexação 1-based)
-            for col in ["E", "F"]:  # Colunas E e F
-                cell = ws[f"{col}{row}"]
-                if not cell.data_type == "f":  # Mantém as fórmulas
-                    cell.value = None  # Apaga apenas valores estáticos
+    # Apaga os valores das colunas E e F da linha 2 até a linha 26377
+    for row in range(2, 26377):  # Linha 2 até 287 (Excel usa indexação 1-based)
+        for col in ["E", "F"]:  # Colunas E e F
+            cell = ws[f"{col}{row}"]
+            if not cell.data_type == "f":  # Mantém as fórmulas
+                cell.value = None  # Apaga apenas valores estáticos
 
     # Salva o arquivo modificado
     wb.save(nome_arquivo)
     print(f"Arquivo '{nome_arquivo}' criado e modificado com sucesso!")
+
+def combinar_planilhas():
+    ...
 
 def exibir_caixa_mensagem():
     root = tk.Tk()
@@ -392,6 +394,7 @@ TODO
     - Fazer com que o programa apague as colunas dos outros servidores para que fique salvo apenas o do servidor em especifico (otimizando a pesquisa por itens de um servidor em especifico) caso necessário, concatenar novamente os valores do DB de cada servidor para fazer tudo em apenas uma grande base
     - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
     - Essa é a forma mais otimizada de resolver esse problema?
+    - Como fazer para que o programa pegue todas as planilhas e junte tudo em apenas uma planilha apenas jogando os valores das outras planilhas no mesmo indice que a planilha principal terá, porém sem os valores
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens
