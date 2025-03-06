@@ -368,8 +368,9 @@ print(f"Tempo de execução: {execution_time:.2f} segundos")
 # - Control buttons minimizado
 
 
+
+TODO 
 """
-TO DO
 * Implementar criação de arquivos excel
     - quando o programa for executado criará um arquivo excel com o nome da data da execução e com as linhas e colunas para preencher
     - verificar quais sheets, linhas e colunas irão ser criadas junto do novo arquivo excel
@@ -386,3 +387,4 @@ TO DO
     - muito trabalho, 10 linhas no banco de dados para cada item classificação 4, tirando os outros itens
     com classificação inferior
 """
+
