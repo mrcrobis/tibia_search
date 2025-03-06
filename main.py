@@ -6,16 +6,18 @@ import os
 import pandas as pd
 import tkinter as tk
 import time
+import shutil
 from PIL import Image
 from tkinter import messagebox
 from datetime import datetime
+
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # X = 'arquivo'.png
 x = ''
 
-excel_path = r'D:\Programming\tibia_search\tibia_search\tibia_search_bot\tibia_search_db.xlsx'
+excel_path = r'D:\Programming\tibia_search\tibia_search_db_source.xlsx'
 image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
 sheet_name = 'DB'
 #df = pd.read_excel(excel_path, sheet_name='DB', engine='openpyxl')
@@ -65,34 +67,54 @@ aux = 0
 aux_sanguine = 0
 
 # preencher com servidor
-#print(f"Informe o Servidor: ")
-#identificador_servidor = input() 
+print(f"Informe o Servidor: ")
+identificador_servidor = input() 
 
 #functions ---------------------------------------------------------------------------------------------------------------------------
 
-def copiar_e_modificar_excel(arquivo_origem):
-
+def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     # Obtém a data atual no formato dd-mm-yyyy
     data_atual = datetime.now().strftime('%d-%m-%Y')
-    nome_arquivo = f"{data_atual}.xlsx"
+    nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
-    # Lê o arquivo Excel existente
-    with pd.ExcelFile(arquivo_origem) as xls:
-        with pd.ExcelWriter(nome_arquivo, engine='xlsxwriter') as writer:
-            for sheet_name in xls.sheet_names:
-                df = pd.read_excel(xls, sheet_name=sheet_name)
-                
-                # Apaga os valores das colunas
-                if sheet_name == "DB":
-                    colunas_alvo_indices = [4, 5]  # Índices das colunas E e F (zero-based)
-                    for i in colunas_alvo_indices:
-                        if i < len(df.columns):  # Garante que o índice existe
-                            df.iloc[0:26376, i] = ''
-                
-                # Escreve a planilha modificada no novo arquivo
-                df.to_excel(writer, sheet_name=sheet_name, index=False)
+    # Diretório onde o arquivo será salvo
+    pasta_destino = "db_sheets"
     
-    print(f"Arquivo '{nome_arquivo}' criado com sucesso com modificações!")
+    # Cria a pasta se ela não existir
+    os.makedirs(pasta_destino, exist_ok=True)
+
+    # Caminho completo do novo arquivo
+    nome_arquivo = os.path.join(pasta_destino, "{}_{}.xlsx".format(data_atual, identificador_servidor))
+
+    # Faz uma cópia do arquivo original para manter as fórmulas
+    shutil.copy(arquivo_origem, nome_arquivo)
+
+    # Abre o arquivo copiado para edição
+    wb = openpyxl.load_workbook(nome_arquivo)
+
+    # Mantém apenas a planilha "DB"
+    if "DB" in wb.sheetnames:
+        for sheet_name in wb.sheetnames[:]:  # Criamos uma cópia da lista para evitar erro ao remover
+            if sheet_name != "DB":
+                wb.remove(wb[sheet_name])
+    else:
+        print("A planilha 'DB' não foi encontrada. Nenhuma alteração feita.")
+        return
+
+    # Seleciona a planilha "DB"
+    if "DB" in wb.sheetnames:
+        ws = wb["DB"]
+
+        # Apaga os valores das colunas E e F da linha 2 até a linha 287
+        for row in range(2, 26377):  # Linha 2 até 287 (Excel usa indexação 1-based)
+            for col in ["E", "F"]:  # Colunas E e F
+                cell = ws[f"{col}{row}"]
+                if not cell.data_type == "f":  # Mantém as fórmulas
+                    cell.value = None  # Apaga apenas valores estáticos
+
+    # Salva o arquivo modificado
+    wb.save(nome_arquivo)
+    print(f"Arquivo '{nome_arquivo}' criado e modificado com sucesso!")
 
 def exibir_caixa_mensagem():
     root = tk.Tk()
@@ -301,7 +323,6 @@ def extrair_valor_img(regiao):
 def salvar_db():
     global wb
 
-    # Salvar as mudanças
     wb.save(excel_path)
 
 def mainItem():
@@ -344,7 +365,7 @@ def mainItemSanguine():
 
 #test -----------------------------------------------------------------------------------------------------------------------------------
 arquivo_origem = excel_path
-copiar_e_modificar_excel(arquivo_origem)
+copiar_e_modificar_excel(arquivo_origem, identificador_servidor)
 # testar a posicao do mouse
 #posicao_mouse = pyautogui.position()
 #print(f"A posição atual do mouse é: {posicao_mouse}")
@@ -366,15 +387,11 @@ print(f"Tempo de execução: {execution_time:.2f} segundos")
 # - 1 barra lateral na esquerda e uma na direita
 # - Barra de vida no topo com barra de XP
 # - Control buttons minimizado
+# - personagem parado com o "DP" na sua frente (acima do personagem)
 
-
-
-TODO 
 """
 * Implementar criação de arquivos excel
-    - quando o programa for executado criará um arquivo excel com o nome da data da execução e com as linhas e colunas para preencher
-    - verificar quais sheets, linhas e colunas irão ser criadas junto do novo arquivo excel
-    - o novo arquivo não mantem as formulas
+    - Fazer com que o programa apague as colunas dos outros servidores para que fique salvo apenas o do servidor em especifico (otimizando a pesquisa por itens de um servidor em especifico) caso necessário, concatenar novamente os valores do DB de cada servidor para fazer tudo em apenas uma grande base
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens
@@ -387,4 +404,3 @@ TODO
     - muito trabalho, 10 linhas no banco de dados para cada item classificação 4, tirando os outros itens
     com classificação inferior
 """
-
