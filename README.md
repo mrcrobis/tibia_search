@@ -24,3 +24,10 @@ Com o teste feito o programa principal poderá ser executado, tendo que informar
 Ao encerrar o programa irá informar o tempo decorrido.
 
 O arquivo .pbix é um teste feito em PowerBI para demonstração e afins de estudos utilizando a plataforma
+
+No excel:
+    B = Server name
+    C = Item name
+    D = Categoria
+    E = Buy Offer
+    F = Sell Offer

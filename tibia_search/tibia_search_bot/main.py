@@ -7,15 +7,9 @@ import tkinter as tk
 import time
 from PIL import Image
 from tkinter import messagebox
+from datetime import datetime
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-# No excel:
-# B = Server name
-# C = Item name
-# D = Categoria
-# E = Buy Offer
-# F = Sell Offer
 
 # X = 'arquivo'.png
 x = ''
@@ -329,6 +323,7 @@ def mainItemSanguine():
 #print(f"A posição atual do mouse é: {posicao_mouse}")
 
 #execution -------------------------------------------------------------------------------------------------------------------------------
+
 start_time = time.time()
 time.sleep(5)
 mainItem()
@@ -348,6 +343,9 @@ print(f"Tempo de execução: {execution_time:.2f} segundos")
 
 """
 TO DO
+* Implementar criação de arquivos excel
+    - quando o programa for executado criará um arquivo excel com o nome da data da execução e com as linhas e colunas para preencher
+    - verificar quais sheets, linhas e colunas irão ser criadas junto do novo arquivo excel
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens
