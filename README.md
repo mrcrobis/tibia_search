@@ -32,3 +32,10 @@ No excel:
     D = Categoria
     E = Buy Offer
     F = Sell Offer
+
+# configuracoes da janela do tibia
+# - apenas local chat e log abertos
+# - 1 barra lateral na esquerda e uma na direita
+# - Barra de vida no topo com barra de XP
+# - Control buttons minimizado
+# - personagem parado com o "DP" na sua frente (acima do personagem)

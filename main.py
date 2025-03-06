@@ -382,16 +382,16 @@ execution_time = end_time - start_time
 exibir_caixa_mensagem()
 print(f"Tempo de execução: {execution_time:.2f} segundos")
 """
-# configuracoes da janela do tibia --------------------------------------------------------------------------------------------------------
-# - apenas local chat e log abertos
-# - 1 barra lateral na esquerda e uma na direita
-# - Barra de vida no topo com barra de XP
-# - Control buttons minimizado
-# - personagem parado com o "DP" na sua frente (acima do personagem)
+# ---------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 """
+TODO
 * Implementar criação de arquivos excel
     - Fazer com que o programa apague as colunas dos outros servidores para que fique salvo apenas o do servidor em especifico (otimizando a pesquisa por itens de um servidor em especifico) caso necessário, concatenar novamente os valores do DB de cada servidor para fazer tudo em apenas uma grande base
+    - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
+    - Essa é a forma mais otimizada de resolver esse problema?
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens
