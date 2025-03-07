@@ -79,7 +79,7 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
     # Diretório onde o arquivo será salvo
-    pasta_destino = "db_sheets"
+    pasta_destino = "db_sheets/{}".format(data_atual)
     
     # Cria a pasta se ela não existir
     os.makedirs(pasta_destino, exist_ok=True)
