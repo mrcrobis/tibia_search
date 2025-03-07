@@ -105,8 +105,8 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     # Seleciona a planilha "DB"
     ws = wb["DB"]
 
-    # Apaga os valores das colunas E e F da linha 2 até a linha 26377
-    for row in range(2, 26377):  # Linha 2 até 287 (Excel usa indexação 1-based)
+    # Apaga os valores das colunas E e F da linha 2 até a linha 27319
+    for row in range(2, 27319):  # Linha 2 até 287 (Excel usa indexação 1-based)
         for col in ["E", "F"]:  # Colunas E e F
             cell = ws[f"{col}{row}"]
             if not cell.data_type == "f":  # Mantém as fórmulas
