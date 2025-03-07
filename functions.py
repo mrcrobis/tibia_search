@@ -9,7 +9,7 @@ import shutil
 import re
 from PIL import Image
 from tkinter import messagebox
-from main import identificador_servidor
+from global_var import identificador_servidor
 from dictionary import items, items_grand_sanguine
 from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
 

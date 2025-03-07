@@ -1,12 +1,9 @@
 from dictionary import items, items_grand_sanguine
 from datetime import time
-from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws
+from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, identificador_servidor
 from functions import achar_servidor_e_item, achar_servidor_e_item_sanguine, BuscarItem, BuscarItemSanguine, clicar, combinar_planilhas, copiar_e_modificar_excel, digitar, exibir_caixa_mensagem, extrair_valor_img, mainItem, mainItemSanguine, pegar_nome_arquivo_png, preencher_valor, remover_arquivos, salvar_db
 
 #test -----------------------------------------------------------------------
-
-print(f"Informe o Servidor: ")
-identificador_servidor = input() 
 
 arquivo_origem = excel_path
 copiar_e_modificar_excel(arquivo_origem, identificador_servidor)
@@ -43,7 +40,7 @@ print(f"Tempo de execução: {execution_time:.2f} segundos")
 
 """
 TODO
-* Corrigir o erro de import entre os arquivos
+* Alterar nas funções a planilha que será modificada durante a execução do código (remover a planilha source e utilizar a planilha separada do servidor em execução)
 * Implementar criação de arquivos excel
     - Fazer com que o programa apague as colunas dos outros servidores para que fique salvo apenas o do servidor em especifico (otimizando a pesquisa por itens de um servidor em especifico) caso necessário, concatenar novamente os valores do DB de cada servidor para fazer tudo em apenas uma grande base
     - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
