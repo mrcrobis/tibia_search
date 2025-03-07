@@ -11,10 +11,11 @@ from PIL import Image
 from tkinter import messagebox
 from global_var import identificador_servidor
 from dictionary import items, items_grand_sanguine
-from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
-
+from global_var import x, aux, aux_sanguine, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
 
 def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
+
+    global new_excel_path
 
     nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
@@ -55,6 +56,11 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     # Salva o arquivo modificado
     wb.save(nome_arquivo)
     print(f"Arquivo '{nome_arquivo}' criado e modificado com sucesso!")
+
+    # Altera o excel path do source para esse novo arquivo excel criado
+    new_excel_path = fr'D:\Programming\tibia_search\db_sheets\{data_atual}\{data_atual}_{identificador_servidor}.xlsx'
+
+    return new_excel_path
 
 def combinar_planilhas(pasta_entrada, nome_base):
     # Lista todos os arquivos na pasta
@@ -166,7 +172,7 @@ def BuscarItemSanguine():
     #pyautogui.rightClick((mouse1x, mouse1y))
 
 def achar_servidor_e_item():
-    global cell_sell_offer, cell_buy_offer, identificador_item, identificador_servidor, excel_path, ws, wb
+    global cell_sell_offer, cell_buy_offer, identificador_item, identificador_servidor, ws, wb
     
     # Iterar sobre as linhas da planilha para encontrar a posição
     servidor_col_idx = 1  # Coluna B (0-indexed seria 1)
@@ -196,7 +202,7 @@ def achar_servidor_e_item():
         print(f"Servidor '{identificador_servidor}' com item '{identificador_item}' não encontrado.")
 
 def achar_servidor_e_item_sanguine():
-    global cell_buy_offer, cell_sell_offer, identificador_item_grand_sanguine, identificador_servidor, excel_path, ws, wb
+    global cell_buy_offer, cell_sell_offer, identificador_item_grand_sanguine, identificador_servidor, new_excel_path, ws, wb
     
     # Iterar sobre as linhas da planilha para encontrar a posição
     servidor_col_idx = 1  # Coluna B (0-indexed seria 1)
@@ -227,13 +233,13 @@ def achar_servidor_e_item_sanguine():
 
 def preencher_valor():
     # localizar a linha exatada do itemXservidor e preencher os valores no preço de compra e preço de venda
-    global cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, excel_path, wb, ws
+    global cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, new_excel_path, wb, ws
 
     print(f"sell_offer inicial: {sell_offer}")
     print(f"buy_offer inicial: {buy_offer}")
 
     # Verificar se as variáveis globais estão definidas corretamente
-    if not all([cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, excel_path]):
+    if not all([cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, new_excel_path]):
         print("Uma ou mais variáveis globais não estão definidas corretamente.")
         return
     
@@ -302,7 +308,7 @@ def extrair_valor_img(regiao):
 def salvar_db():
     global wb
 
-    wb.save(excel_path)
+    wb.save(new_excel_path)
 
 def mainItem():
 

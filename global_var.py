@@ -5,8 +5,6 @@ from datetime import datetime
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-
-
 print(f"Informe o Servidor: ")
 identificador_servidor = input()
 
