@@ -99,6 +99,20 @@ def combinar_planilhas(pasta_entrada, nome_base):
     nome_saida = os.path.join(pasta_entrada, f"{nome_base}_unificado.xlsx")
     wb_base.save(nome_saida)
 
+    # Fecha o workbook antes da exclusão
+    wb_base.close()
+    
+    print('Deseja excluir as planilhas após a unificação? s/n')
+    identificador_exclusao = input()
+
+    if identificador_exclusao == 's':
+        # Exclui os arquivos originais
+        for arquivo in arquivos_para_unir:
+            os.remove(arquivo)   
+        print('Planilhas excluídas')
+    else:
+        print('Planilhas não excluídas')
+
     print(f"Arquivo '{nome_saida}' criado com sucesso! Todas as planilhas com o nome base '{nome_base}' foram unificadas.")
     
 def exibir_caixa_mensagem():

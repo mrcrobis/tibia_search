@@ -5,13 +5,14 @@ from functions import achar_servidor_e_item, achar_servidor_e_item_sanguine, Bus
 
 #test -----------------------------------------------------------------------
 
-arquivo_origem = excel_path
-copiar_e_modificar_excel(arquivo_origem, identificador_servidor)
+#arquivo_origem = excel_path
+#copiar_e_modificar_excel(arquivo_origem, identificador_servidor)
 
-
-#pasta_entrada = "db_sheets"
-#nome_base = "06-03-2025"  
-#combinar_planilhas(pasta_entrada, nome_base)
+#print('Informa o nome_base')
+#nome_base = input()
+nome_base = "07-03-2025"  
+pasta_entrada = "db_sheets/{}".format(nome_base)
+combinar_planilhas(pasta_entrada, nome_base)
 
 # testar a posicao do mouse
 #posicao_mouse = pyautogui.position()
@@ -39,8 +40,6 @@ print(f"Tempo de execução: {execution_time:.2f} segundos")
 
 """
 TODO
-* Alterar nas funções a planilha que será modificada durante a execução do código (remover a planilha source e utilizar a planilha separada do servidor em execução)
-    - Alterar o excel_path dentro das funções para ser o caminho do novo arquivo excel criado durante o copiar_e_modificar_excel()
 * Implementar criação de arquivos excel
     - Fazer com que o programa apague as colunas dos outros servidores para que fique salvo apenas o do servidor em especifico (otimizando a pesquisa por itens de um servidor em especifico) caso necessário, concatenar novamente os valores do DB de cada servidor para fazer tudo em apenas uma grande base
     - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
