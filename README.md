@@ -26,16 +26,16 @@ Ao encerrar o programa irá informar o tempo decorrido.
 
 O arquivo .pbix é um teste feito em PowerBI para demonstração e afins de estudos utilizando a plataforma
 
-No excel:
-    B = Server name
-    C = Item name
-    D = Categoria
-    E = Buy Offer
-    F = Sell Offer
+# No excel:
+- B = Server name
+- C = Item name
+- D = Categoria
+- E = Buy Offer
+- F = Sell Offer
 
 # configuracoes da janela do tibia
-# - apenas local chat e log abertos
-# - 1 barra lateral na esquerda e uma na direita
-# - Barra de vida no topo com barra de XP
-# - Control buttons minimizado
-# - personagem parado com o "DP" na sua frente (acima do personagem)
+- apenas local chat e log abertos
+- 1 barra lateral na esquerda e uma na direita
+- Barra de vida no topo com barra de XP
+- Control buttons minimizado
+- personagem parado com o "DP" na sua frente (acima do personagem)

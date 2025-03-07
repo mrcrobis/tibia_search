@@ -9,13 +9,13 @@ import shutil
 import re
 from PIL import Image
 from tkinter import messagebox
-from datetime import datetime
+from main import identificador_servidor
 from dictionary import items, items_grand_sanguine
-from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, wb, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER
+from global_var import x, aux, aux_sanguine, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
+
 
 def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
-    # Obtém a data atual no formato dd-mm-yyyy
-    data_atual = datetime.now().strftime('%d-%m-%Y')
+
     nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
     # Diretório onde o arquivo será salvo

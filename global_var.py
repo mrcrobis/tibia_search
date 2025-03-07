@@ -1,13 +1,18 @@
 import pytesseract
 import openpyxl
 import os
+from datetime import datetime
+from main import identificador_servidor
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # X = 'arquivo'.png
 x = ''
 
-excel_path = r'D:\Programming\tibia_search\tibia_search_db_source.xlsx'
+# Obtém a data atual no formato dd-mm-yyyy
+data_atual = datetime.now().strftime('%d-%m-%Y')
+
+excel_path = r'D:\Programming\tibia_search\db_sheets\{}\{}_{}.xlsx'.format(data_atual, data_atual, identificador_servidor)
 image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
 sheet_name = 'DB'
 #df = pd.read_excel(excel_path, sheet_name='DB', engine='openpyxl')
