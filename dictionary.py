@@ -18,5 +18,5 @@ items = ["Tibia Coins", "Gold Token", "Silver Token","Alicorn Ring", "Amulet of 
 "Sweet Mangonaise Elixir", "The Cobra Amulet", "Thick Fur", "Toga Mortis", "Turtle Shell", "Umbral Master Spellbook", "Vampire Teeth", "Winter Wolf Fur", "Wyvern Talisman"]
 
 # pesquisa o segundo item (item grand sanguine e enchanted aparece primeiro)
-items_grand_sanguine = ["Pendulet", "Sleep Shawl", "Turtle Amulet", "Spiritthorn Ring", "Sanguine Battleaxe", "Sanguine Blade",  "Sanguine Bludgeon", "Sanguine Bow", "Sanguine Coil", "Sanguine Crossbow",
+items_secundarios = ["Pendulet", "Sleep Shawl", "Turtle Amulet", "Spiritthorn Ring", "Sanguine Battleaxe", "Sanguine Blade",  "Sanguine Bludgeon", "Sanguine Bow", "Sanguine Coil", "Sanguine Crossbow",
 "Sanguine Cudgel", "Sanguine Hatchet", "Sanguine Razor", "Sanguine Rod"]

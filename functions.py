@@ -10,12 +10,13 @@ import re
 from PIL import Image
 from tkinter import messagebox
 from global_var import identificador_servidor
-from dictionary import items, items_grand_sanguine
-from global_var import x, aux, aux_sanguine, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
+from dictionary import items, items_secundarios
+from global_var import x, aux, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
 
-def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
+def copiar_e_formatar_excel(arquivo_origem, identificador_servidor):
 
-    global new_excel_path
+    global new_excel_path, sheet_name
+
 
     nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
@@ -63,6 +64,7 @@ def copiar_e_modificar_excel(arquivo_origem, identificador_servidor):
     return new_excel_path
 
 def combinar_planilhas(pasta_entrada, nome_base):
+
     # Lista todos os arquivos na pasta
     arquivos_xlsx = [f for f in os.listdir(pasta_entrada) if f.endswith(".xlsx")]
 
@@ -116,17 +118,21 @@ def combinar_planilhas(pasta_entrada, nome_base):
     print(f"Arquivo '{nome_saida}' criado com sucesso! Todas as planilhas com o nome base '{nome_base}' foram unificadas.")
     
 def exibir_caixa_mensagem():
+
     root = tk.Tk()
     root.withdraw()
     messagebox.showinfo("Programa Finalizado", "O programa foi concluído. Clique OK para confirmar.")
 
 def clicar(posicao):
+
     pyautogui.click(posicao)
 
 def digitar(texto):
+
     pyautogui.write(texto)
 
 def BuscarItem():
+
     global items, identificador_item
     identificador_item = items[aux]
 
@@ -156,9 +162,10 @@ def BuscarItem():
     
     #pyautogui.rightClick((mouse1x, mouse1y))
 
-def BuscarItemSanguine():
-    global items_grand_sanguine, identificador_item_grand_sanguine
-    identificador_item_grand_sanguine = items_grand_sanguine[aux]
+def BuscarItemSecundario():
+
+    global items_secundarios, identificador_item_secundario
+    identificador_item_secundario = items_secundarios[aux]
 
     #pyautogui.rightClick((mouse1x, mouse1y))
     
@@ -168,7 +175,7 @@ def BuscarItemSanguine():
     
     time.sleep(1)
     
-    digitar(identificador_item_grand_sanguine)
+    digitar(identificador_item_secundario)
     
     time.sleep(1)
     pyautogui.click((mouse4x, mouse4y))
@@ -186,6 +193,7 @@ def BuscarItemSanguine():
     #pyautogui.rightClick((mouse1x, mouse1y))
 
 def achar_servidor_e_item():
+
     global cell_sell_offer, cell_buy_offer, identificador_item, identificador_servidor, ws, wb
     
     # Iterar sobre as linhas da planilha para encontrar a posição
@@ -215,8 +223,9 @@ def achar_servidor_e_item():
     else:
         print(f"Servidor '{identificador_servidor}' com item '{identificador_item}' não encontrado.")
 
-def achar_servidor_e_item_sanguine():
-    global cell_buy_offer, cell_sell_offer, identificador_item_grand_sanguine, identificador_servidor, new_excel_path, ws, wb
+def achar_servidor_e_item_secundario():
+
+    global cell_buy_offer, cell_sell_offer, identificador_item_secundario, identificador_servidor, new_excel_path, ws, wb, servidor_row
     
     # Iterar sobre as linhas da planilha para encontrar a posição
     servidor_col_idx = 1  # Coluna B (0-indexed seria 1)
@@ -228,13 +237,13 @@ def achar_servidor_e_item_sanguine():
     for row in ws.iter_rows(min_row=2, max_col=ws.max_column, max_row=ws.max_row):
         if row[servidor_col_idx].value == identificador_servidor:
             servidor_row = row[servidor_col_idx].row
-            if row[item_col_idx].value == identificador_item_grand_sanguine:
+            if row[item_col_idx].value == identificador_item_secundario:
                 item_row = row[item_col_idx].row
                 break
     
     # Verificar se encontramos algum resultado
     if item_row:
-        print(f"Servidor '{identificador_servidor}' com item '{identificador_item_grand_sanguine}' encontrado na linha {item_row}.")
+        print(f"Servidor '{identificador_servidor}' com item '{identificador_item_secundario}' encontrado na linha {item_row}.")
         # Definir a coluna
         coluna_sell_offer_letra = 'E'
         cell_sell_offer = f"{coluna_sell_offer_letra}{item_row}"
@@ -243,9 +252,10 @@ def achar_servidor_e_item_sanguine():
         print(cell_sell_offer)
         print(cell_buy_offer)
     else:
-        print(f"Servidor '{identificador_servidor}' com item '{identificador_item_grand_sanguine}' não encontrado.")
+        print(f"Servidor '{identificador_servidor}' com item '{identificador_item_secundario}' não encontrado.")
 
 def preencher_valor():
+
     # localizar a linha exatada do itemXservidor e preencher os valores no preço de compra e preço de venda
     global cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, new_excel_path, wb, ws
 
@@ -276,6 +286,7 @@ def preencher_valor():
     print(f"")
 
 def remover_arquivos(file_path):
+
     global x
     os.remove(file_path)
     print(f"Arquivo {file_path} removido com sucesso.")
@@ -283,6 +294,7 @@ def remover_arquivos(file_path):
     x = ''
 
 def pegar_nome_arquivo_png():
+
     global x, image_path
     # Listar todos os arquivos na pasta especificada
     arquivos = os.listdir(image_path)
@@ -295,6 +307,7 @@ def pegar_nome_arquivo_png():
             return 
                
 def extrair_valor_img(regiao):
+
     global x
     # atualiza o caminho da imagem com o valor de X
     image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
@@ -320,6 +333,7 @@ def extrair_valor_img(regiao):
     return None 
 
 def salvar_db():
+
     global wb
 
     wb.save(new_excel_path)
@@ -343,16 +357,17 @@ def mainItem():
         x = ''
         aux += 1
 
-def mainItemSanguine():
-    global item_grand_sanguine, sell_offer, buy_offer, x, aux
-    num_items_grand_sanguine = len(items_grand_sanguine)
+def mainItemSecundario():
+    
+    global items_secundarios, sell_offer, buy_offer, x, aux
+    num_items_secundarios = len(items_secundarios)
     aux = 0 # usa o mesmo aux do mainItem e reseta ao iniciar a função
 
-    while aux < num_items_grand_sanguine:
-        item_grand_sanguine = items_grand_sanguine[aux]
-        BuscarItemSanguine()
+    while aux < num_items_secundarios:
+        items_secundarios = items_secundarios[aux]
+        BuscarItemSecundario()
         pegar_nome_arquivo_png()
-        achar_servidor_e_item_sanguine()
+        achar_servidor_e_item_secundario()
         sell_offer = str(extrair_valor_img(REGIAO_SELL_OFFER))
         buy_offer = str(extrair_valor_img(REGIAO_BUY_OFFER))
         preencher_valor()
