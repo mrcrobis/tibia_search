@@ -2,3 +2,4 @@ accounts.txt
 venv/
 commands.txt
 __pycache__/
+db_sheets/
