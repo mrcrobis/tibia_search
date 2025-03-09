@@ -3,3 +3,5 @@ venv/
 commands.txt
 __pycache__/
 db_sheets/
+tibia_search_bi.pbix
+tibia_search_db_source.xlsx
