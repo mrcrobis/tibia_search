@@ -1,3 +1,4 @@
 accounts.txt
 venv/
 commands.txt
+__pycache__/
