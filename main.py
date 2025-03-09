@@ -1,4 +1,4 @@
-from dictionary import items, items_grand_sanguine
+from dictionary import items, items_secundarios
 from datetime import time
 
 from global_var import x, aux, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, identificador_servidor, mouse1x, mouse1y
