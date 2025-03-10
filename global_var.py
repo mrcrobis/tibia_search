@@ -20,8 +20,8 @@ sheet_name = 'DB'
 #df = pd.read_excel(excel_path, sheet_name='DB', engine='openpyxl')
 
 # Carregar a planilha usando openpyxl
-wb = openpyxl.load_workbook(excel_path)
-ws = wb['DB']
+#wb = openpyxl.load_workbook(excel_path)
+#ws = wb['DB']
 
 # posicao do mouse para clicar na caixa depot dentro do tibia (depot acima do personagem), não funcionará caso tenha algum item em cima da caixa do depot
 mouse1x = 1163
@@ -31,11 +31,11 @@ mouse1y = 313
 mouse2x = 2522
 mouse2y = 382
 
-# clica no item pesquisado no depot para abrir a tela de preços
+# clica no primeiro item pesquisado no depot para abrir a tela de preços
 mouse3x = 859
 mouse3y = 516
 
-
+# clica no segundo item pesquisado no depot para abrir a tela de preços
 mouse4x = 865
 mouse4y = 552
 

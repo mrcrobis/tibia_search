@@ -1,18 +1,15 @@
-from dictionary import items, items_secundarios
 from datetime import time
-
-from global_var import x, aux, excel_path, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, identificador_servidor, mouse1x, mouse1y
-
-from functions import achar_servidor_e_item, achar_servidor_e_item_secundario, BuscarItem, BuscarItemSecundario, clicar, combinar_planilhas, copiar_e_formatar_excel, digitar, exibir_caixa_mensagem, extrair_valor_img, mainItem, mainItemSecundario, pegar_nome_arquivo_png, preencher_valor, remover_arquivos, salvar_db
+from global_var import *
+from functions import *
+from dictionary import *
 
 #test -----------------------------------------------------------------------
 
-#arquivo_origem = excel_path
-#copiar_e_formatar_excel(arquivo_origem, identificador_servidor)
+copiar_e_formatar_excel(excel_path, identificador_servidor)
 
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "07-03-2025"  
+#nome_base = "10-03-2025"  
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
@@ -21,23 +18,30 @@ from functions import achar_servidor_e_item, achar_servidor_e_item_secundario, B
 
 #print(f"A posição atual do mouse é: {posicao_mouse}")
 
-# --------------------------------------------------------------------------
 
-#execution -----------------------------------------------------------------
+# Coleta de dados ------------------------------------------------------------
 
-"""
-start_time = time.time()
-time.sleep(5)
-mainItem()
-mainItemSanguine()
-salvar_db()
-end_time = time.time()
-execution_time = end_time - start_time
-exibir_caixa_mensagem()
-print(f"Tempo de execução: {execution_time:.2f} segundos")
-"""
+#delay_inicio(3)
+#inicia_Timer()
+#copiar_e_formatar_excel
+#main_Item()
+#main_Item_Secundario()
+#salvar_db()
+#finaliza_Timer()
+#exibir_caixa_mensagem()
 
-# ---------------------------------------------------------------------------
+# Combinacao de planilhas -----------------------------------------------------
+
+# exemplo = 10-03-2025
+#print('Informa o nome_base')
+#nome_base = input()
+#nome_base = "10-03-2025"  
+#pasta_entrada = "db_sheets/{}".format(nome_base)
+#combinar_planilhas(pasta_entrada, nome_base)
+
+# Atualizacao preco TC---------------------------------------------------------
+
+atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\10-03-2025\10-03-2025_combined.xlsx')
 
 
 """
@@ -56,4 +60,5 @@ TODO
 * Implementar função de pesquisa de items com Tier (T1 - T10)
     - muito trabalho, 10 linhas no banco de dados para cada item classificação 4, tirando os outros itens
     com classificação inferior
+* Atualizar o db após o lançamento oficial da nova classe Monk, adicionando novos items como poções, colares, aneis, armas e equipamentos 
 """

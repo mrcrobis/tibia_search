@@ -9,14 +9,12 @@ import shutil
 import re
 from PIL import Image
 from tkinter import messagebox
-from global_var import identificador_servidor
-from dictionary import items, items_secundarios
-from global_var import x, aux, image_path, mouse2x, mouse2y, mouse3x, mouse3y, mouse4x, mouse4y, sheet_name, wb, ws, REGIAO_BUY_OFFER, REGIAO_SELL_OFFER, data_atual
+from global_var import *
+from dictionary import *
 
 def copiar_e_formatar_excel(arquivo_origem, identificador_servidor):
 
-    global new_excel_path, sheet_name
-
+    global new_excel_path, sheet_name, ws, wb
 
     nome_arquivo = "{}_{}.xlsx".format(data_atual, identificador_servidor)
     
@@ -65,6 +63,8 @@ def copiar_e_formatar_excel(arquivo_origem, identificador_servidor):
 
 def combinar_planilhas(pasta_entrada, nome_base):
 
+    global nome_saida, wb_atual
+
     # Lista todos os arquivos na pasta
     arquivos_xlsx = [f for f in os.listdir(pasta_entrada) if f.endswith(".xlsx")]
 
@@ -97,23 +97,28 @@ def combinar_planilhas(pasta_entrada, nome_base):
                 if cell_principal.value is None or cell_principal.value == "":
                     cell_principal.value = cell.value
 
+    # Criar uma nova planilha chamada 'Preco'
+    if 'Preco' not in wb_base.sheetnames:
+        wb_base.create_sheet('Preco')
+
     # Salva o arquivo modificado na mesma pasta
-    nome_saida = os.path.join(pasta_entrada, f"{nome_base}_unificado.xlsx")
+    nome_saida = os.path.join(pasta_entrada, f"{nome_base}_combined.xlsx")
     wb_base.save(nome_saida)
 
     # Fecha o workbook antes da exclusão
     wb_base.close()
-    
-    print('Deseja excluir as planilhas após a unificação? s/n')
-    identificador_exclusao = input()
+     
+    # Opção para excluir as planilhas após a execução
+#    print('Deseja excluir as planilhas após a unificação? s/n')
+#    identificador_exclusao = input()
 
-    if identificador_exclusao == 's':
+#    if identificador_exclusao == 's':
         # Exclui os arquivos originais
-        for arquivo in arquivos_para_unir:
-            os.remove(arquivo)   
-        print('Planilhas excluídas')
-    else:
-        print('Planilhas não excluídas')
+#        for arquivo in arquivos_para_unir:
+#            os.remove(arquivo)   
+#        print('Planilhas excluídas')
+#    else:
+#        print('Planilhas não excluídas')
 
     print(f"Arquivo '{nome_saida}' criado com sucesso! Todas as planilhas com o nome base '{nome_base}' foram unificadas.")
     
@@ -131,7 +136,7 @@ def digitar(texto):
 
     pyautogui.write(texto)
 
-def BuscarItem():
+def buscar_Item():
 
     global items, identificador_item
     identificador_item = items[aux]
@@ -142,19 +147,19 @@ def BuscarItem():
     
     pyautogui.rightClick((mouse2x, mouse2y))
     
-    time.sleep(1)
+    delay_1s()
     
     digitar(identificador_item)
     
-    time.sleep(1)
+    delay_1s()
     
     pyautogui.click((mouse3x, mouse3y))
     
-    time.sleep(1)
+    delay_1s()
     
     pyautogui.press('=')  
     
-    time.sleep(1)
+    delay_1s()
     
     pyautogui.press('esc')
     
@@ -162,7 +167,7 @@ def BuscarItem():
     
     #pyautogui.rightClick((mouse1x, mouse1y))
 
-def BuscarItemSecundario():
+def buscar_Item_Secundario():
 
     global items_secundarios, identificador_item_secundario
     identificador_item_secundario = items_secundarios[aux]
@@ -173,18 +178,18 @@ def BuscarItemSecundario():
     
     pyautogui.rightClick((mouse2x, mouse2y))
     
-    time.sleep(1)
+    delay_1s()
     
     digitar(identificador_item_secundario)
     
-    time.sleep(1)
+    delay_1s()
     pyautogui.click((mouse4x, mouse4y))
     
-    time.sleep(1)
+    delay_1s()
     
     pyautogui.press('=')  
     
-    time.sleep(1)
+    delay_1s()
     
     pyautogui.press('esc')
     
@@ -257,7 +262,7 @@ def achar_servidor_e_item_secundario():
 def preencher_valor():
 
     # localizar a linha exatada do itemXservidor e preencher os valores no preço de compra e preço de venda
-    global cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, new_excel_path, wb, ws
+    global cell_buy_offer, cell_sell_offer, sell_offer, buy_offer, new_excel_path
 
     print(f"sell_offer inicial: {sell_offer}")
     print(f"buy_offer inicial: {buy_offer}")
@@ -334,18 +339,16 @@ def extrair_valor_img(regiao):
 
 def salvar_db():
 
-    global wb
+    wb_atual.save(new_excel_path)
 
-    wb.save(new_excel_path)
-
-def mainItem():
+def main_Item():
 
     global item, sell_offer, buy_offer, x, aux
     num_items = len(items)
 
     while aux < num_items:
         item = items[aux]
-        BuscarItem()
+        buscar_Item()
         pegar_nome_arquivo_png()
         achar_servidor_e_item()
         sell_offer = str(extrair_valor_img(REGIAO_SELL_OFFER))
@@ -357,7 +360,7 @@ def mainItem():
         x = ''
         aux += 1
 
-def mainItemSecundario():
+def main_Item_Secundario():
     
     global items_secundarios, sell_offer, buy_offer, x, aux
     num_items_secundarios = len(items_secundarios)
@@ -365,7 +368,7 @@ def mainItemSecundario():
 
     while aux < num_items_secundarios:
         items_secundarios = items_secundarios[aux]
-        BuscarItemSecundario()
+        buscar_Item_Secundario()
         pegar_nome_arquivo_png()
         achar_servidor_e_item_secundario()
         sell_offer = str(extrair_valor_img(REGIAO_SELL_OFFER))
@@ -376,3 +379,44 @@ def mainItemSecundario():
         image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
         x = ''
         aux += 1
+
+def inicia_Timer():
+
+    global start_time
+    start_time = time.time()
+    #return start_time
+
+def finaliza_Timer():
+    
+    global execution_time
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return print(f"Tempo de execução: {execution_time:.2f} segundos")
+
+def delay_inicio(valor):
+
+    time.sleep(valor)
+
+def delay_1s():
+
+    time.sleep(1)
+
+def atualiza_Preco_TC_arquivo_combined(caminho_arquivo_combined):
+
+    wb_combined = openpyxl.load_workbook(caminho_arquivo_combined)
+    wb_combined_sheet = wb_combined['Preco']
+
+    while True:
+            try:
+                valor_TC = float(input("Digite o valor atual da Tibia Coin: "))
+                break
+            except ValueError:
+                print("Entrada inválida. Digite um número válido.")  
+
+    wb_combined_sheet['A1'] = valor_TC
+
+    wb_combined.save(caminho_arquivo_combined)
+    wb_combined.close()
+
+    print("Valor da tibia coin em R$ atualizado com sucesso!")
+    print(f"Valor atual: R$ {valor_TC:.2f}")
