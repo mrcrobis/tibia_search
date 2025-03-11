@@ -12,6 +12,13 @@ from tkinter import messagebox
 from global_var import *
 from dictionary import *
 
+# wb = xx-xx-xx.xlsx
+# ws = planilha dentro do wb
+
+# wb_base = xx-xx-xx_combined.xlsx
+
+# wb_atual = var temporaria para auxiliar na juncao dos arquivos xlsx
+
 def copiar_e_formatar_excel(arquivo_origem, identificador_servidor):
 
     global new_excel_path, sheet_name, ws, wb
@@ -199,7 +206,7 @@ def buscar_Item_Secundario():
 
 def achar_servidor_e_item():
 
-    global cell_sell_offer, cell_buy_offer, identificador_item, identificador_servidor, ws, wb
+    global cell_sell_offer, cell_buy_offer, identificador_item, identificador_servidor
     
     # Iterar sobre as linhas da planilha para encontrar a posição
     servidor_col_idx = 1  # Coluna B (0-indexed seria 1)
@@ -230,7 +237,7 @@ def achar_servidor_e_item():
 
 def achar_servidor_e_item_secundario():
 
-    global cell_buy_offer, cell_sell_offer, identificador_item_secundario, identificador_servidor, new_excel_path, ws, wb, servidor_row
+    global cell_buy_offer, cell_sell_offer, identificador_item_secundario, identificador_servidor, new_excel_path, servidor_row
     
     # Iterar sobre as linhas da planilha para encontrar a posição
     servidor_col_idx = 1  # Coluna B (0-indexed seria 1)
@@ -339,7 +346,7 @@ def extrair_valor_img(regiao):
 
 def salvar_db():
 
-    wb_atual.save(new_excel_path)
+    wb.save(new_excel_path)
 
 def main_Item():
 

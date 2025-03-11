@@ -23,7 +23,7 @@ copiar_e_formatar_excel(excel_path, identificador_servidor)
 
 #delay_inicio(3)
 #inicia_Timer()
-#copiar_e_formatar_excel
+#copiar_e_formatar_excel(excel_path, identificador_servidor)
 #main_Item()
 #main_Item_Secundario()
 #salvar_db()
@@ -41,7 +41,7 @@ copiar_e_formatar_excel(excel_path, identificador_servidor)
 
 # Atualizacao preco TC---------------------------------------------------------
 
-atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\10-03-2025\10-03-2025_combined.xlsx')
+#atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\10-03-2025\10-03-2025_combined.xlsx')
 
 
 """
