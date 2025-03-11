@@ -5,11 +5,11 @@ from dictionary import *
 
 #test -----------------------------------------------------------------------
 
-copiar_e_formatar_excel(excel_path, identificador_servidor)
+#copiar_e_formatar_excel(excel_path, identificador_servidor)
 
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "10-03-2025"  
+#nome_base = "11-03-2025"  
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
@@ -35,17 +35,20 @@ copiar_e_formatar_excel(excel_path, identificador_servidor)
 # exemplo = 10-03-2025
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "10-03-2025"  
+#nome_base = "11-03-2025"  
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
 # Atualizacao preco TC---------------------------------------------------------
 
-#atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\10-03-2025\10-03-2025_combined.xlsx')
+#atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\11-03-2025\11-03-2025_combined.xlsx')
 
 
 """
 TODO
+
+*Atualizar fórmula no db_source
+- conflito na aba conversor entre os arquivos de servidor e o arquivo combined
 * Implementar criação de arquivos excel
     - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
     - Essa é a forma mais otimizada de resolver esse problema?

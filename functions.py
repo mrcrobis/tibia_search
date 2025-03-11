@@ -40,24 +40,37 @@ def copiar_e_formatar_excel(arquivo_origem, identificador_servidor):
     # Abre o arquivo copiado para edição
     wb = openpyxl.load_workbook(nome_arquivo)
 
-    # Mantém apenas a planilha "DB"
+
     if "DB" in wb.sheetnames:
-        for sheet_name in wb.sheetnames[:]:  # Criamos uma cópia da lista para evitar erro ao remover
-            if sheet_name != "DB":
-                wb.remove(wb[sheet_name])
+        if "Valor Coin por Servidor" in wb.sheetnames:
+            if "Conversor" in wb.sheetnames:
+                for sheet_name in wb.sheetnames[:]:  # Criamos uma cópia da lista para evitar erro ao remover
+                    if sheet_name != "DB":
+                        if sheet_name != "Valor Coin por Servidor":
+                            if sheet_name != "Conversor":
+                                wb.remove(wb[sheet_name])
     else:
         print("A planilha 'DB' não foi encontrada. Nenhuma alteração feita.")
         return
 
     # Seleciona a planilha "DB"
     ws = wb["DB"]
+    wt = wb["Valor Coin por Servidor"]
 
-    # Apaga os valores das colunas E e F da linha 2 até a linha 27319
-    for row in range(2, 27319):  # Linha 2 até 287 (Excel usa indexação 1-based)
+    # Apaga os valores das colunas E e F da linha 2 até a linha 27319 da sheet DB
+    for row in range(2, 27319):
         for col in ["E", "F"]:  # Colunas E e F
             cell = ws[f"{col}{row}"]
             if not cell.data_type == "f":  # Mantém as fórmulas
                 cell.value = None  # Apaga apenas valores estáticos
+
+        # Apaga os valores da coluna B da linha 2 até a linha 85 da sheet Valor Coin por Servidor
+    for row in range(2, 85):
+        for col in ["B"]:  # Colunas E e F
+            cell = wt[f"{col}{row}"]
+            if not cell.data_type == "f":  # Mantém as fórmulas
+                cell.value = None  # Apaga apenas valores estáticos
+
 
     # Salva o arquivo modificado
     wb.save(nome_arquivo)
@@ -105,8 +118,8 @@ def combinar_planilhas(pasta_entrada, nome_base):
                     cell_principal.value = cell.value
 
     # Criar uma nova planilha chamada 'Preco'
-    if 'Preco' not in wb_base.sheetnames:
-        wb_base.create_sheet('Preco')
+    if 'Conversor' not in wb_base.sheetnames:
+        wb_base.create_sheet('Conversor')
 
     # Salva o arquivo modificado na mesma pasta
     nome_saida = os.path.join(pasta_entrada, f"{nome_base}_combined.xlsx")
@@ -411,7 +424,7 @@ def delay_1s():
 def atualiza_Preco_TC_arquivo_combined(caminho_arquivo_combined):
 
     wb_combined = openpyxl.load_workbook(caminho_arquivo_combined)
-    wb_combined_sheet = wb_combined['Preco']
+    wb_combined_sheet = wb_combined['Conversor']
 
     while True:
             try:
@@ -420,7 +433,7 @@ def atualiza_Preco_TC_arquivo_combined(caminho_arquivo_combined):
             except ValueError:
                 print("Entrada inválida. Digite um número válido.")  
 
-    wb_combined_sheet['A1'] = valor_TC
+    wb_combined_sheet['E8'] = valor_TC
 
     wb_combined.save(caminho_arquivo_combined)
     wb_combined.close()
