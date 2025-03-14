@@ -158,8 +158,8 @@ def digitar(texto):
 
 def buscar_Item():
 
-    global items, identificador_item
-    identificador_item = items[aux]
+    global items_a_pesquisar, identificador_item
+    identificador_item = items_a_pesquisar[aux]
 
     #pyautogui.rightClick((mouse1x, mouse1y))
     
@@ -189,8 +189,8 @@ def buscar_Item():
 
 def buscar_Item_Secundario():
 
-    global items_secundarios, identificador_item_secundario
-    identificador_item_secundario = items_secundarios[aux]
+    global items_secundarios_a_pesquisar, identificador_item_secundario
+    identificador_item_secundario = items_secundarios_a_pesquisar[aux]
 
     #pyautogui.rightClick((mouse1x, mouse1y))
     
@@ -364,10 +364,10 @@ def salvar_db():
 def main_Item():
 
     global item, sell_offer, buy_offer, x, aux
-    num_items = len(items)
+    num_items = len(items_a_pesquisar)
 
     while aux < num_items:
-        item = items[aux]
+        item = items_a_pesquisar[aux]
         buscar_Item()
         pegar_nome_arquivo_png()
         achar_servidor_e_item()
@@ -382,12 +382,12 @@ def main_Item():
 
 def main_Item_Secundario():
     
-    global items_secundarios, sell_offer, buy_offer, x, aux
-    num_items_secundarios = len(items_secundarios)
+    global items_secundarios_a_pesquisar, sell_offer, buy_offer, x, aux
+    num_items_secundarios = len(items_secundarios_a_pesquisar)
     aux = 0 # usa o mesmo aux do mainItem e reseta ao iniciar a função
 
     while aux < num_items_secundarios:
-        items_secundarios = items_secundarios[aux]
+        items_secundarios_a_pesquisar = items_secundarios_a_pesquisar[aux]
         buscar_Item_Secundario()
         pegar_nome_arquivo_png()
         achar_servidor_e_item_secundario()

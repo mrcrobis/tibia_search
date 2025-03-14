@@ -47,11 +47,13 @@ from dictionary import *
 """
 TODO
 
-*Atualizar fórmula no db_source
-- conflito na aba conversor entre os arquivos de servidor e o arquivo combined
-* Implementar criação de arquivos excel
-    - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
-    - Essa é a forma mais otimizada de resolver esse problema?
+* O que deve ter no dashboard
+    - Filtro de data
+    - Filtro de item
+    - Filtro de servidor (tipo de pvp, battleeye, status)
+    - tabela com os items junto do preço em reais e em tc
+    - Gráfico de linha para comparação de preço de item X ao passar do tempo no servidor Y
+    - Grafico de barras para comparar preço de items em diferentes servidores
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens
