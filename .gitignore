@@ -1,9 +1,6 @@
 accounts.txt
 venv/
 commands.txt
-__pycache__/
-db_sheets/
 tibia_search_bi.pbix
 tibia_search_db_source.xlsx
-tibia_search_db_source_copy.xlsx
-imgs/
+tibia_search_db_source - Copia.xlsx
