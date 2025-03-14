@@ -14,6 +14,9 @@ Bibliotecas utilizadas:
     - os (interface gráfica)
     - tkinter (abrir caixa de textos/alertas)
     - PIL (manipulação de imagens)
+    - xlsxwriter (manipulação de arquivo excel como editar colunas já existentes)
+    - streamlit (criação de dashboards)
+    - plotly (criação de gráficos)
 
 Após a instalação das bibliotecas, basta o usuário editar os items que queira buscar, adicionando ou removendo do array items e items_grand_sanguine.
 
@@ -24,3 +27,17 @@ Com o teste feito o programa principal poderá ser executado, tendo que informar
 Ao encerrar o programa irá informar o tempo decorrido.
 
 O arquivo .pbix é um teste feito em PowerBI para demonstração e afins de estudos utilizando a plataforma
+
+# No excel:
+- B = Server name
+- C = Item name
+- D = Categoria
+- E = Buy Offer
+- F = Sell Offer
+
+# configuracoes da janela do tibia
+- apenas local chat e log abertos
+- 1 barra lateral na esquerda e uma na direita
+- Barra de vida no topo com barra de XP
+- Control buttons minimizado
+- personagem parado com o "DP" na sua frente (acima do personagem)
