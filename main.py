@@ -5,11 +5,11 @@ from dictionary import *
 
 #test -----------------------------------------------------------------------
 
-copiar_e_formatar_excel(excel_path, identificador_servidor)
+#copiar_e_formatar_excel(excel_path, identificador_servidor)
 
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "10-03-2025"  
+#nome_base = "11-03-2025"  
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
@@ -35,20 +35,25 @@ copiar_e_formatar_excel(excel_path, identificador_servidor)
 # exemplo = 10-03-2025
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "10-03-2025"  
+#nome_base = "11-03-2025"  
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
 # Atualizacao preco TC---------------------------------------------------------
 
-#atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\10-03-2025\10-03-2025_combined.xlsx')
+#atualiza_Preco_TC_arquivo_combined(r'D:\Programming\tibia_search\db_sheets\11-03-2025\11-03-2025_combined.xlsx')
 
 
 """
 TODO
-* Implementar criação de arquivos excel
-    - Será possível usar várias DB dentro do powerBI para fazer a assimilação de valores de preço de itens sem ter algum transtorno?
-    - Essa é a forma mais otimizada de resolver esse problema?
+
+* O que deve ter no dashboard
+    - Filtro de data
+    - Filtro de item
+    - Filtro de servidor (tipo de pvp, battleeye, status)
+    - tabela com os items junto do preço em reais e em tc
+    - Gráfico de linha para comparação de preço de item X ao passar do tempo no servidor Y
+    - Grafico de barras para comparar preço de items em diferentes servidores
 * Implementar quantidade de itens/ofertas no market 
     - da mesma forma que o programa pega o preço dos itens usando a imagem ele pode pegar a quantidade
     de itens a venda em coluna e somar toda a quantidade, o lado negativo é que a quantidade de itens

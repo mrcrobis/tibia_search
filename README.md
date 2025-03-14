@@ -15,6 +15,8 @@ Bibliotecas utilizadas:
     - tkinter (abrir caixa de textos/alertas)
     - PIL (manipulação de imagens)
     - xlsxwriter (manipulação de arquivo excel como editar colunas já existentes)
+    - streamlit (criação de dashboards)
+    - plotly (criação de gráficos)
 
 Após a instalação das bibliotecas, basta o usuário editar os items que queira buscar, adicionando ou removendo do array items e items_grand_sanguine.
 
