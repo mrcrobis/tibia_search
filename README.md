@@ -13,6 +13,8 @@ Bibliotecas utilizadas:
     - pytesseract (fazer reconhecimento visual dos valores em tela e convertê-los em texto)
     - os (interface gráfica)
     - tkinter (abrir caixa de textos/alertas)
+
+A adicionar:
     - PIL (manipulação de imagens)
     - xlsxwriter (manipulação de arquivo excel como editar colunas já existentes)
     - streamlit (criação de dashboards)

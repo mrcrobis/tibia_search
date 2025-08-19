@@ -4,7 +4,6 @@ import time
 import pytesseract
 import os
 import tkinter as tk
-import time
 import shutil
 import re
 from PIL import Image

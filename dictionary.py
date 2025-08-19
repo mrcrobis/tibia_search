@@ -3,7 +3,7 @@ global servidores
 # pesquisa comum
 items_a_pesquisar = ["Tibia Coins", "Gold Token", "Silver Token"]
 
-# pesquisa o segundo item (item grand sanguine e enchanted aparece primeiro)
+# pesquisa o segundo item (item grand sanguine e enchanted ring/amulet aparece primeiro)
 items_secundarios_a_pesquisar = []
 
 soulcores_a_pesquisar = []
@@ -28,10 +28,10 @@ items_index = ["Tibia Coins", "Gold Token", "Silver Token","Alicorn Ring", "Amul
 "Sweet Mangonaise Elixir", "The Cobra Amulet", "Thick Fur", "Toga Mortis", "Turtle Shell", "Umbral Master Spellbook", "Vampire Teeth", "Winter Wolf Fur", "Wyvern Talisman"]
 
 # todos os items secundários
-items_secundarios_index = ["Pendulet", "Sleep Shawl", "Turtle Amulet", "Spiritthorn Ring", "Sanguine Battleaxe", "Sanguine Blade",  "Sanguine Bludgeon", "Sanguine Bow", "Sanguine Coil", "Sanguine Crossbow",
-"Sanguine Cudgel", "Sanguine Hatchet", "Sanguine Razor", "Sanguine Rod"]
+items_secundarios_index = ["Pendulet", "Sleep Shawl", "Turtle Amulet", "Spiritthorn Ring", "Sanguine Battleaxe", "Sanguine Blade",  "Sanguine Bludgeon", "Sanguine Bow", "Sanguine Coil", "Sanguine Crossbow", "Sanguine Cudgel", "Sanguine Hatchet", "Sanguine Razor", "Sanguine Rod"]
 
 # todos os servidores
-servidores_index = ["Ambra", "Antica", "Astera", "Axera", "Belobra", "Bombra", "Bona", "Castela", "Celebra", "Celesta", "Collabra", "Damora", "Descubra", "Dia", "Epoca", "Esmera", "Etebra", "Ferobra", "Firmera", "Flamera", "Gentebra", "Gladera", "Gravitera", "Guerribra", "Harmonia", "Havera", "Honbra", "Impulsa", "Inabra", "Issobra", "Jacabra", "Jadebra", "Jaguna", "Kalibra", "Kardera", "Kendria", "Lobera", "Luminera", "Lutabra", "Menera", "Monza", "Mykera", "Nadora", "Nefera", "Nevia", "Obscubra", "Oceanis", "Ombra", "Ousabra", "Pacera", "Peloria", "Premia", "Pulsera", "Quelibra", "Quintera", "Rasteibra", "Refugia", "Retalia", "Runera", "Secura", "Serdebra", "Solidera", "Stralis", "Synera", "Talera", "Thyria", "Tornabra", "Ulera", "Unebra", "Ustebra", "Utobra", "Vandera", "Venebra", "Victoris", "Vitera", "Vunira", "Wadira", "Wildera", "Wintera", "Yara", "Yonabra", "Yovera", "Yubra", "Zephyra"]
+servidores_index = ["Ambra", "Antica", "Astera", "Axera", "Belobra", "Bombra", "Bona", "Castela", "Celebra", "Celesta", "Collabra", "Damora", "Descubra", "Dia", "Epoca", "Esmera", "Etebra", 
+"Ferobra", "Firmera", "Flamera", "Gentebra", "Gladera", "Gravitera", "Guerribra", "Harmonia", "Havera", "Honbra", "Impulsa", "Inabra", "Issobra", "Jacabra", "Jadebra", "Jaguna", "Kalibra", "Kardera", "Kendria", "Lobera", "Luminera", "Lutabra", "Menera", "Monza", "Mykera", "Nadora", "Nefera", "Nevia", "Obscubra", "Oceanis", "Ombra", "Ousabra", "Pacera", "Peloria", "Premia", "Pulsera", "Quelibra", "Quintera", "Rasteibra", "Refugia", "Retalia", "Runera", "Secura", "Serdebra", "Solidera", "Stralis", "Synera", "Talera", "Thyria", "Tornabra", "Ulera", "Unebra", "Ustebra", "Utobra", "Vandera", "Venebra", "Victoris", "Vitera", "Vunira", "Wadira", "Wildera", "Wintera", "Yara", "Yonabra", "Yovera", "Yubra", "Zephyra"]
 
 soulcores_index = []

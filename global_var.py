@@ -1,5 +1,4 @@
 import pytesseract
-import openpyxl
 import os
 from datetime import datetime
 
