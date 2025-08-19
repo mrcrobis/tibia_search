@@ -9,7 +9,7 @@ from dictionary import *
 
 #print('Informa o nome_base')
 #nome_base = input()
-#nome_base = "11-03-2025"  
+#nome_base = "11-03-2025"
 #pasta_entrada = "db_sheets/{}".format(nome_base)
 #combinar_planilhas(pasta_entrada, nome_base)
 
@@ -45,8 +45,6 @@ from dictionary import *
 
 
 """
-TODO
-
 * O que deve ter no dashboard
     - Filtro de data
     - Filtro de item
@@ -63,7 +61,6 @@ TODO
     calcular o retorno monetário "ROI"
     - feito no powerBI (?)
 * Implementar função de pesquisa de items com Tier (T1 - T10)
-    - muito trabalho, 10 linhas no banco de dados para cada item classificação 4, tirando os outros itens
-    com classificação inferior
+    - muito trabalho, 10 linhas no banco de dados para cada item classificação 4, tirando os outros itens com classificação inferior
 * Atualizar o db após o lançamento oficial da nova classe Monk, adicionando novos items como poções, colares, aneis, armas e equipamentos 
 """

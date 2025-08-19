@@ -1,0 +1,6 @@
+pyautogui
+openpyxl
+time
+pytesseract
+os
+tkinter

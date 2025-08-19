@@ -400,6 +400,26 @@ def main_Item_Secundario():
         x = ''
         aux += 1
 
+def main_Soulcore():
+    
+    global soulcores_a_pesquisar, sell_offer, buy_offer, x, aux
+    num_soulcores = len(soulcores_a_pesquisar)
+    aux = 0 # usa o mesmo aux do mainItem e reseta ao iniciar a função
+
+    while aux < num_soulcores:
+        soulcores_a_pesquisar = soulcores_a_pesquisar[aux]
+        buscar_Item()
+        pegar_nome_arquivo_png()
+        achar_servidor_e_item()
+        sell_offer = str(extrair_valor_img(REGIAO_SELL_OFFER))
+        buy_offer = str(extrair_valor_img(REGIAO_BUY_OFFER))
+        preencher_valor()
+        image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
+        remover_arquivos(image_path)
+        image_path = os.path.join(r'C:\Users\joaov\AppData\Local\Tibia\packages\Tibia\screenshots',x)
+        x = ''
+        aux += 1
+
 def inicia_Timer():
 
     global start_time

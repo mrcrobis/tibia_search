@@ -3,3 +3,7 @@ venv/
 commands.txt
 tibia_search_db_source.xlsx
 tibia_search_db_source - Copia.xlsx
+imgs
+__pycache__
+db_sheets
+dashboard.py
